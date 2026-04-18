@@ -22,19 +22,24 @@ Infrastructure: AWS EC2 (Amazon Linux 2023)
 
 4. Key Features
 통합 분석: 전체 분석 건수, 최다 발생 리전, 유효 분석 서비스 수 실시간 집계
+
 월별 장애 발생 추이: 데이터 전수 기간 내 장애 발생 흐름 시각화
+
 장애 원인 세분화: Deployment, Scaling, Network 등 10개 카테고리 정밀 분류를 통한 원인 파악
+
 리전별 서비스 장애 분포: 리전과 서비스 간 상관관계 히트맵 분석
+
 서비스 연쇄 장애 패턴: Multi-Service Impact 상황에서의 서비스 간 연쇄 장애 패턴 도출
+
 서비스 영향도 전수 조사: 전체 AWS 서비스 대상 장애 발생 빈도 및 영향도 통계
 
-5. Implementation Details (Cost-Effective Processing)
+6. Implementation Details (Cost-Effective Processing)
 AWS Managed Service의 비용 부담을 최소화하기 위해 데이터 처리 파이프라인을 다음과 같이 최적화하였습니다.
 Preprocessing & Analysis: Managed ETL 도구 대신 EC2 내 Python Pandas를 활용하여 대량의 데이터를 인메모리 방식으로 빠르게 정제하고 고정 비용 내에서 처리량을 극대화했습니다.
 Storage: 행 기반 CSV 대비 압축률과 읽기 성능이 월등한 Parquet 포맷을 채택하여 S3 저장 비용 및 트래픽을 최적화했습니다.
 Visualization: 별도의 웹 서버나 WAS 구축 없이 Streamlit을 활용하여 데이터 분석용 단일 엔드포인트 대시보드를 구현했습니다.
 
-6. Requirements Content
+7. Requirements Content
 requests,
 feedparser,
 pandas,
