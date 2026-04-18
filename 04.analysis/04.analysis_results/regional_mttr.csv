@@ -1,0 +1,16 @@
+Region,Incident_Count,Avg_Recovery_Min,Max_Min
+Bahrain,2,2083.55,2083.55
+Canada-Central,2,230.0,230.0
+Global,35,144.77,423.53
+Hyderabad,2,43.7,43.7
+Ireland,2,128.0,128.0
+N. Virginia,21,190.97,942.0
+Ohio,4,40.18,46.0
+Oregon,4,73.79,115.67
+Sao Paulo,4,1.0,1.0
+Singapore,2,52.42,52.42
+Stockholm,2,448.38,448.38
+Sydney,2,52.43,52.43
+Tokyo,6,26.0,41.0
+UAE,2,3083.33,3083.33
+Zurich,4,184.52,298.17

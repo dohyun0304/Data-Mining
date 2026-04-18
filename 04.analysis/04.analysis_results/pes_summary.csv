@@ -1,0 +1,19 @@
+Title,Event_Date,Cause_Category
+Summary of the Amazon EC2 and Amazon RDS Service Disruption in the US East Region,2011-04-29,Utility/Power
+Summary of the AWS Service Event in the US East Region,2012-07-02,Utility/Power
+"Summary of the October 22, 2012 AWS Service Event in the US-East Region",2012-10-22,Network
+"Summary of the December 24, 2012 Amazon ELB Service Event in the US-East Region",2012-12-24,Human Error
+Summary of the Amazon SimpleDB Service Disruption,,Utility/Power
+Summary of the December 17th event in the South America Region (SA-EAST-1),2013-12-20,Utility/Power
+"Summary of the Amazon EC2, Amazon EBS, and Amazon RDS Service Event in the EU West Region",,Utility/Power
+Summary of the Amazon DynamoDB Service Disruption and Related Impacts in the US-East Region,,Network
+Summary of the AWS Service Event in the Sydney Region,,Utility/Power
+Summary of the Amazon S3 Service Disruption in the Northern Virginia (US-EAST-1) Region,,Software/Bug
+Summary of the Amazon EC2 DNS Resolution Issues in the Asia Pacific (Seoul) Region (AP-NORTHEAST-2),2018-11-22,Network
+Summary of the Amazon EC2 and Amazon EBS Service Event in the Tokyo (AP-NORTHEAST-1) Region,2019-08-23,Utility/Power
+Summary of the Amazon Kinesis Event in the Northern Virginia (US-EAST-1) Region,,Software/Bug
+Summary of AWS Direct Connect Event in the Tokyo (AP-NORTHEAST-1) Region,2021-09-02,Network
+Summary of the AWS Service Event in the Northern Virginia (US-EAST-1) Region,,Network
+Summary of the AWS Lambda Service Event in Northern Virginia (US-EAST-1) Region,,Software/Bug
+Summary of the Amazon Kinesis Data Streams Service Event in Northern Virginia (US-EAST-1) Region,,Human Error
+Summary of the Amazon DynamoDB Service Disruption in the Northern Virginia (US-EAST-1) Region,,Network

@@ -1,0 +1,11 @@
+Affected_Services,count
+Other,38
+RDS,25
+IAM,18
+EC2,18
+CloudFront,14
+Lambda,8
+DynamoDB,8
+S3,6
+EBS,6
+Kinesis,4

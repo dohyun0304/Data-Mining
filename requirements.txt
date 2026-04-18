@@ -1,0 +1,13 @@
+# AWS 통신
+boto3
+# [수집] RSS 피드 및 HTTP 통신
+requests
+feedparser
+
+# [저장 및 처리] 데이터 핸들링 및 고효율 포맷
+pandas
+pyarrow
+
+# [분석 및 시각화] 대시보드
+streamlit
+plotly
