@@ -52,22 +52,22 @@ if df_aws_sum is not None and df_gcp_sum is not None:
     gcp_total = df_gcp_sum.iloc[0]['Total']
     
     # 💡 건수 비교(delta) 부분 제거 완료
-    m1.metric("📦 AWS 총 분석 관측치", f"{aws_total}건", help="PES 및 과거 히스토리 포함 전체 장애 표본 수")
-    m2.metric("🟢 GCP 총 분석 관측치", f"{gcp_total}건", help="수집된 글로벌 Major 장애 표본 수")
-    m3.metric("🏗️ AWS 모니터링 서비스", f"{len(df_aws_service) if df_aws_service is not None else 0}개")
-    m4.metric("🔷 GCP 모니터링 서비스", f"{len(df_gcp_service) if df_gcp_service is not None else 0}개")
+    m1.metric("AWS 총 분석 관측치", f"{aws_total}건", help="PES 및 과거 히스토리 포함 전체 장애 표본 수")
+    m2.metric("GCP 총 분석 관측치", f"{gcp_total}건", help="수집된 글로벌 Major 장애 표본 수")
+    m3.metric("AWS 모니터링 서비스", f"{len(df_aws_service) if df_aws_service is not None else 0}개")
+    m4.metric("GCP 모니터링 서비스", f"{len(df_gcp_service) if df_gcp_service is not None else 0}개")
     
     st.divider()
 
     tab1, tab2, tab3, tab4 = st.tabs([
-        "📊 멀티 클라우드 종합 비교", 
-        "🧡 AWS 인프라 상세 분석", 
-        "💙 GCP 인프라 상세 분석", 
-        "🧠 🔬 통계적 유의성 검정 및 전파 모델링"
+        "멀티 클라우드 종합 비교", 
+        "AWS 인프라 상세 분석", 
+        "GCP 인프라 상세 분석", 
+        "통계적 유의성 검정 및 전파 모델링"
     ])
 
     with tab1:
-        st.subheader("📈 CSP 간 가용성 추이 및 동시 발생 패턴 비교")
+        st.subheader("CSP 간 가용성 추이 및 동시 발생 패턴 비교")
         if df_aws_trend is not None and df_gcp_trend is not None:
             df_aws_trend['CSP'] = 'AWS'
             df_gcp_trend['CSP'] = 'GCP'
@@ -88,7 +88,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
             st.plotly_chart(fig_trend, use_container_width=True)
 
     with tab2:
-        st.subheader("🧡 AWS 복합 장애 및 리전 분포 분석")
+        st.subheader("AWS 복합 장애 및 리전 분포 분석")
         cc1, cc2 = st.columns(2)
         with cc1:
             st.markdown("##### **장애 원인 대분류 빈도**")
@@ -97,7 +97,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
                                            orientation='h', color='Count', color_continuous_scale='Reds', text_auto=True)
                 st.plotly_chart(fig_aws_cause_bar, use_container_width=True)
         with cc2:
-            st.markdown("##### **리전 × 서비스 장애 밀집도 (Heatmap)**")
+            st.markdown("##### **리전 서비스 장애 밀집도 (Heatmap)**")
             if df_aws_reg_svc is not None:
                 fig_aws_reg = px.density_heatmap(df_aws_reg_svc, x='Region', y='Service', z='Count',
                                                 color_continuous_scale='YlOrRd', text_auto=True)
@@ -105,7 +105,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
 
         st.divider()
 
-        st.markdown("##### **🔗 서비스 간 단순 동시 발생 패턴 (Top 10)**")
+        st.markdown("##### **서비스 간 단순 동시 발생 패턴 (Top 10)**")
         if df_aws_chain is not None and not df_aws_chain.empty:
             df_aws_chain['Combo'] = df_aws_chain['Svc_A'] + " + " + df_aws_chain['Svc_B']
             fig_aws_chain = px.bar(df_aws_chain.head(10), x='Weight', y='Combo', orientation='h',
@@ -114,7 +114,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
 
         st.divider()
 
-        st.markdown("##### **🏗️ AWS 서비스별 누적 장애 영향도 전수 조사**")
+        st.markdown("##### **AWS 서비스별 누적 장애 영향도 전수 조사**")
         if df_aws_service is not None:
             chart_height_aws = max(500, len(df_aws_service) * 23)
             fig_aws_svc = px.bar(df_aws_service.sort_values('Count', ascending=True), 
@@ -123,7 +123,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
             st.plotly_chart(fig_aws_svc, use_container_width=True)
 
     with tab3:
-        st.subheader("💙 GCP 복합 장애 및 서비스 분포 분석")
+        st.subheader("GCP 복합 장애 및 서비스 분포 분석")
         gc1, gc2 = st.columns(2)
         with gc1:
             st.markdown("##### **장애 원인 대분류 빈도**")
@@ -140,7 +140,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
 
         st.divider()
 
-        st.markdown("##### **🔗 서비스 간 단순 동시 발생 패턴 (Top 10)**")
+        st.markdown("##### **서비스 간 단순 동시 발생 패턴 (Top 10)**")
         if df_gcp_chain is not None and not df_gcp_chain.empty:
             df_gcp_chain['Combo'] = df_gcp_chain['Svc_A'] + " + " + df_gcp_chain['Svc_B']
             fig_gcp_chain = px.bar(df_gcp_chain.head(10), x='Weight', y='Combo', orientation='h',
@@ -151,7 +151,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
 
         st.divider()
 
-        st.markdown("##### **🏗️ GCP 서비스별 누적 장애 영향도 전수 조사**")
+        st.markdown("##### **GCP 서비스별 누적 장애 영향도 전수 조사**")
         if df_gcp_service is not None:
             chart_height_gcp = max(500, len(df_gcp_service) * 23)
             fig_gcp_svc = px.bar(df_gcp_service.sort_values('Count', ascending=True), 
@@ -161,13 +161,11 @@ if df_aws_sum is not None and df_gcp_sum is not None:
 
     with tab4:
         st.subheader("🔬 1차 심사 의견 반영: 가설 검증 및 인과성 전파 모델링")
-        # 💡 어려운 텍스트를 직관적인 설명으로 변경했습니다.
-        st.info("💡 **분석 기준 (시간 윈도우 & 인과성):** 우연히 겹친 장애를 배제하기 위해, ① 동일한 시간대(±2시간 이내)에 발생했거나 ② 장애 보고서 본문 내에 명확한 원인-결과(`caused by` 등)로 기록된 팩트만을 '연쇄 전파 장애'로 인정하여 모델링했습니다.")
+        st.info("**분석 기준 (시간 윈도우 & 인과성):** 우연히 겹친 장애를 배제하기 위해, ① 동일한 시간대(±2시간 이내)에 발생했거나 ② 장애 보고서 본문 내에 명확한 원인-결과(`caused by` 등)로 기록된 팩트만을 '연쇄 전파 장애'로 인정하여 모델링했습니다.")
         
-        st.markdown("### 🧡 1. AWS 인프라 의존성 검정 및 병목점 추적")
+        st.markdown("###1. AWS 인프라 의존성 검정 및 병목점 추적")
         aw_col1, aw_col2 = st.columns(2)
         with aw_col1:
-            # 💡 제목 옆에 도움말 아이콘을 달아 쉽게 설명했습니다.
             st.markdown("##### **정량적 의존 규칙 강도 (Statistical Lift Top 10)**", help="두 서비스가 우연히 같이 죽을 확률을 1로 봤을 때, 1보다 크면 클수록 시스템적으로 강하게 엮여서 연쇄 장애를 일으킴을 의미합니다.")
             if df_aws_lift is not None and not df_aws_lift.empty:
                 sig_aws_lift = df_aws_lift[df_aws_lift['Significant'] == 'Yes'].head(10)
@@ -191,13 +189,13 @@ if df_aws_sum is not None and df_gcp_sum is not None:
                                              x='Centrality_Score', y='Service', orientation='h',
                                              color='Centrality_Score', color_continuous_scale='Purples', text_auto='.3f')
                     st.plotly_chart(fig_aws_central, use_container_width=True)
-                    st.caption("💡 해석: 이 점수가 가장 높은 서비스가 전체 인프라의 가장 치명적인 약점(SPOF)입니다.")
+                    st.caption("해석: 이 점수가 가장 높은 서비스가 전체 인프라의 가장 치명적인 약점(SPOF)입니다.")
                 else:
                     st.info("중심성 지표가 0보다 큰 서비스가 없습니다.")
 
         st.subheader("", divider="orange")
         
-        st.markdown("### 💙 2. GCP 인프라 의존성 검정 및 병목점 추적")
+        st.markdown("###2. GCP 인프라 의존성 검정 및 병목점 추적")
         gcp_col1, gcp_col2 = st.columns(2)
         with gcp_col1:
             st.markdown("##### **정량적 의존 규칙 강도 (Statistical Lift Top 10)**")
@@ -209,7 +207,7 @@ if df_aws_sum is not None and df_gcp_sum is not None:
                                           color='Lift', color_continuous_scale='Blues', text_auto='.2f')
                     st.plotly_chart(fig_gcp_lift, use_container_width=True)
                 else:
-                    st.info("💡 검정 결과, GCP는 서비스 간 연쇄 장애(Lift > 1) 패턴이 거의 없는 독립적인 아키텍처임이 확인되었습니다.")
+                    st.info("검정 결과, GCP는 서비스 간 연쇄 장애(Lift > 1) 패턴이 거의 없는 독립적인 아키텍처임이 확인되었습니다.")
                 
         with gcp_col2:
             st.markdown("##### **장애 전파 매개 중심성 (Betweenness Centrality Top 10)**")
@@ -221,4 +219,4 @@ if df_aws_sum is not None and df_gcp_sum is not None:
                                              color='Centrality_Score', color_continuous_scale='Teal', text_auto='.3f')
                     st.plotly_chart(fig_gcp_central, use_container_width=True)
 else:
-    st.error("🚨 S3 데이터 파일 로드 오류! 데이터 분석 결과 파일(.csv)이 S3 버킷에 정상적으로 생성되었는지 확인해 주세요.")
+    st.error("S3 데이터 파일 로드 오류! 데이터 분석 결과 파일(.csv)이 S3 버킷에 정상적으로 생성되었는지 확인해 주세요.")
