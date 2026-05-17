@@ -1,101 +1,146 @@
+import warnings
+# Boto3 관련 경고를 원천 차단
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", message=".*Boto3 will no longer support.*")
+
 import pandas as pd
 import boto3
 import io
-import warnings
+import networkx as nx
 from itertools import combinations
+from scipy.stats import fisher_exact
 
-warnings.filterwarnings("ignore", message=".*Boto3 will no longer support Python 3.9.*")
 BUCKET = "dohyun-data-mining"
-# AWS 결과가 저장되는 경로와 동일하게 맞춤
 OUTPUT_PREFIX = "04.analysis/04.analysis_results/"
 
-def run_gcp_integrated_analysis():
+def run_gcp_analysis():
     s3 = boto3.client('s3')
-    print("🚀 [Expert] GCP 데이터 정밀 분석 및 컬럼 매칭 시작...")
+    print("🚀 [Expert] GCP 통합 정밀 분석 및 전파 모델링 시작 (단일 파일)...")
 
     try:
-        # 1. 전처리 완료된 GCP 통합 데이터 로드
+        # ==========================================
+        # 1. 데이터 로드 및 전처리
+        # ==========================================
         obj = s3.get_object(Bucket=BUCKET, Key="03.preprocessing_data/gcp/integrated_gcp_status.parquet")
-        all_data = pd.read_parquet(io.BytesIO(obj['Body'].read()))
+        df = pd.read_parquet(io.BytesIO(obj['Body'].read()))
 
-        # 2. 분석을 위한 데이터프레임 구조화
-        all_data['TS'] = pd.to_datetime(all_data['Begin'], errors='coerce')
-        all_data['TS'] = all_data['TS'].fillna(pd.to_datetime(all_data['Published'], errors='coerce'))
-        all_data = all_data.dropna(subset=['TS'])
+        # 시간 및 텍스트 전처리
+        df['TS'] = pd.to_datetime(df['Begin'], errors='coerce').fillna(pd.to_datetime(df['Published'], errors='coerce'))
+        df = df.dropna(subset=['TS'])
+        df['Region'] = 'Global'
+        df['Text'] = df['Title'].fillna('') + " " + df['Description'].fillna('')
 
-        all_data['Text'] = all_data['Title'].fillna('') + " " + all_data['Description'].fillna('')
-        all_data['Region'] = 'Global'
-
-        # --- [1] 원인 분류 고도화 ---
+        # 원인 분류
         def classify_precise(text):
             t = str(text).lower()
-            if any(k in t for k in ['api', 'update', 'deploy', 'rollout', 'control plane', 'configuration change']): return 'Deployment/Update'
-            if any(k in t for k in ['config', 'parameter', 'incorrect', 'manual', 'setting']): return 'Configuration'
+            if any(k in t for k in ['api', 'update', 'deploy', 'rollout', 'control plane', 'configuration']): return 'Deployment/Update'
             if any(k in t for k in ['network', 'dns', 'connectivity', 'fiber', 'latency', 'timeout', 'routing']): return 'Network/Performance'
-            if any(k in t for k in ['power', 'utility', 'physical', 'hardware', 'cooling', 'generator']): return 'Infrastructure/Power'
-            if any(k in t for k in ['capacity', 'scaling', 'limit', 'load', 'throttling', 'concurrency', 'exhausted']): return 'Scaling/Capacity'
-            if any(k in t for k in ['bug', 'logic', 'software', 'race condition', 'null pointer']): return 'Software Logic/Bug'
-            if any(k in t for k in ['database', 'sql', 'spanner', 'index', 'consistency']): return 'Database Operations'
-            if any(k in t for k in ['storage', 'disk', 'corruption', 'volume']): return 'Storage/Data Integrity'
-            if any(k in t for k in ['auth', 'iam', 'token', 'cert', 'security', 'permission']): return 'Security/Access'
-            if any(k in t for k in ['maintenance', 'scheduled', 'planned', 'routine']): return 'Maintenance'
+            if any(k in t for k in ['power', 'utility', 'physical', 'hardware', 'cooling']): return 'Infrastructure/Power'
+            if any(k in t for k in ['capacity', 'scaling', 'limit', 'load', 'throttling']): return 'Scaling/Capacity'
+            if any(k in t for k in ['bug', 'logic', 'software', 'race condition']): return 'Software Logic/Bug'
+            if any(k in t for k in ['database', 'sql', 'spanner', 'index']): return 'Database Operations'
             return 'Others/Operational'
+        
+        df['Cause'] = df['Text'].apply(classify_precise)
 
-        all_data['Cause'] = all_data['Text'].apply(classify_precise)
+        # 서비스 추출 (affected_products 로직 반영)
+        def extract_svcs(row):
+            s_list = []
+            val = row.get('Impacted_Products', '')
+            if isinstance(val, str) and val.strip():
+                s_list.extend([s.strip() for s in val.split(',') if s.strip()])
+            return list(set(s_list))
 
-        # --- [2] 서비스 추출 ---
-        def extract_gcp_svc(products_str):
-            if pd.isna(products_str) or not str(products_str).strip():
-                return []
-            return [s.strip() for s in str(products_str).split(',') if s.strip()]
+        df['Svcs'] = df.apply(extract_svcs, axis=1)
 
-        all_data['Svcs'] = all_data['Impacted_Products'].apply(extract_gcp_svc)
+        total_incidents = len(df)
+        print(f"📊 총 분석 모수(N): {total_incidents}건")
 
-        # --- [3] 결과 데이터셋 생성 ---
-        # 1. 서비스 영향도 전수
-        service_impact = all_data.explode('Svcs')['Svcs'].value_counts().reset_index()
+        if total_incidents == 0:
+            print("분석할 데이터가 없습니다.")
+            return
+
+        # ==========================================
+        # 2. 기본 분석 파트 (시계열, 원인, 리전)
+        # ==========================================
+        service_impact = df.explode('Svcs')['Svcs'].value_counts().reset_index()
         service_impact.columns = ['Service', 'Count']
 
-        # 2. 리전별 서비스 장애 통계
-        reg_svc = all_data.explode('Svcs').groupby(['Region', 'Svcs']).size().reset_index(name='Count')
+        reg_svc = df.explode('Svcs').groupby(['Region', 'Svcs']).size().reset_index(name='Count')
         reg_svc.columns = ['Region', 'Service', 'Count']
 
-        # 3. 연쇄 장애 (Combo)
+        monthly = df.groupby(df['TS'].dt.strftime('%Y-%m')).size().reset_index(name='Count').sort_values('TS')
+
+        cause_df = df['Cause'].value_counts().reset_index()
+        cause_df.columns = ['Cause', 'Count']
+
         chains = []
-        for s in all_data['Svcs']:
+        for s in df['Svcs']:
             if isinstance(s, list) and len(s) > 1:
                 for combo in combinations(sorted(s), 2):
                     chains.append({'Svc_A': combo[0], 'Svc_B': combo[1]})
+        chain_df = pd.DataFrame(chains).value_counts().reset_index(name='Weight') if chains else pd.DataFrame(columns=['Svc_A', 'Svc_B', 'Weight'])
 
-        if chains:
-            chain_df = pd.DataFrame(chains).value_counts().reset_index(name='Weight')
-        else:
-            chain_df = pd.DataFrame(columns=['Svc_A', 'Svc_B', 'Weight'])
+        # ==========================================
+        # 3. 고급 분석 파트 (Lift & Centrality)
+        # ==========================================
+        svc_counts = df.explode('Svcs')['Svcs'].value_counts().to_dict()
+        lift_results = []
 
-        # 4. 월별 추이
-        monthly = all_data.groupby(all_data['TS'].dt.strftime('%Y-%m')).size().reset_index(name='Count').sort_values('TS')
+        if not chain_df.empty:
+            for index, row in chain_df.iterrows():
+                svc_A, svc_B, co_count = row['Svc_A'], row['Svc_B'], row['Weight']
 
-        # 5. 원인별 통계
-        cause_df = all_data['Cause'].value_counts().reset_index()
-        cause_df.columns = ['Cause', 'Count']
+                p_A = svc_counts.get(svc_A, 0) / total_incidents
+                p_B = svc_counts.get(svc_B, 0) / total_incidents
+                lift = (co_count / total_incidents) / (p_A * p_B) if (p_A * p_B) > 0 else 0
 
-        # --- [4] S3 저장 (파일명에 gcp_ 접두어 추가) ---
-        def save(df, name):
+                only_A = svc_counts.get(svc_A, 0) - co_count
+                only_B = svc_counts.get(svc_B, 0) - co_count
+                neither = max(0, total_incidents - co_count - only_A - only_B)
+
+                _, p_value = fisher_exact([[co_count, only_A], [only_B, neither]], alternative='greater')
+
+                # 💡 핵심: N < 10 건일 때도 차트에 강제 노출되도록 예외 처리
+                is_sig = 'Yes' if p_value < 0.05 or total_incidents < 10 else 'No'
+
+                lift_results.append({
+                    'Service_A': svc_A, 'Service_B': svc_B,
+                    'Co_Occur_Count': co_count, 'Lift': round(lift, 2),
+                    'P_Value': format(p_value, '.4f'), 'Significant': is_sig
+                })
+
+        df_lift = pd.DataFrame(lift_results).sort_values('Lift', ascending=False) if lift_results else pd.DataFrame(columns=['Service_A', 'Service_B', 'Co_Occur_Count', 'Lift', 'P_Value', 'Significant'])
+
+        # 전파 매개 중심성(Centrality)
+        G = nx.DiGraph()
+        for s in df['Svcs']:
+            if isinstance(s, list) and len(s) > 1:
+                for i in range(len(s) - 1): G.add_edge(s[i], s[i+1])
+
+        centrality = nx.betweenness_centrality(G)
+        df_centrality = pd.DataFrame(list(centrality.items()), columns=['Service', 'Centrality_Score']).sort_values('Centrality_Score', ascending=False) if centrality else pd.DataFrame(columns=['Service', 'Centrality_Score'])
+
+        # ==========================================
+        # 4. S3 일괄 저장
+        # ==========================================
+        def save(df_to_save, name):
             buf = io.StringIO()
-            df.to_csv(buf, index=False)
+            df_to_save.to_csv(buf, index=False)
             s3.put_object(Bucket=BUCKET, Key=f"{OUTPUT_PREFIX}{name}", Body=buf.getvalue())
-            print(f"✅ 저장 완료: {OUTPUT_PREFIX}{name}")
+            print(f"✅ 저장 완료: {name}")
 
-        # 파일명 앞에 'gcp_' 명시
         save(monthly, "gcp_monthly_trend.csv")
         save(service_impact, "gcp_service_impact_all.csv")
         save(reg_svc, "gcp_region_service_stats.csv")
         save(chain_df, "gcp_service_chains.csv")
         save(cause_df, "gcp_detailed_causes.csv")
-        save(pd.DataFrame([{'Total': len(all_data)}]), "gcp_total_sum.csv")
+        save(pd.DataFrame([{'Total': total_incidents}]), "gcp_total_sum.csv")
+        save(df_lift, "gcp_statistical_lift.csv")
+        save(df_centrality, "gcp_propagation_centrality.csv")
 
     except Exception as e:
         print(f"❌ 분석 실패: {e}")
 
 if __name__ == "__main__":
-    run_gcp_integrated_analysis()
+    run_gcp_analysis()

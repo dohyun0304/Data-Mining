@@ -1,5 +1,6 @@
 # AWS 통신
 boto3
+
 # [수집] RSS 피드 및 HTTP 통신
 requests
 feedparser
@@ -11,3 +12,7 @@ pyarrow
 # [분석 및 시각화] 대시보드
 streamlit
 plotly
+
+# [고급 분석] 통계 검정 및 전파 모델링
+networkx
+scipy
