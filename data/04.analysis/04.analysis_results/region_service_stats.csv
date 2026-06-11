@@ -1,0 +1,20 @@
+Region,Service,Count
+Global,API Gateway,2
+Global,CloudFront,14
+Global,CloudWatch,4
+Global,DynamoDB,4
+Global,EBS,7
+Global,EC2,11
+Global,ECS,4
+Global,EKS,4
+Global,IAM,2
+Global,Kinesis,3
+Global,Lambda,6
+Global,RDS,5
+Global,Redshift,3
+Global,Route 53,1
+Global,S3,5
+Global,SQS,2
+Global,VPC,3
+Sydney,IAM,2
+Zurich,Lambda,2

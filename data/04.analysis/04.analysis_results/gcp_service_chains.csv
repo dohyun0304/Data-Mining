@@ -1,0 +1,27 @@
+Svc_A,Svc_B,Weight
+Google Compute Engine,Google Kubernetes Engine,56
+Cloud Load Balancing,Google Kubernetes Engine,34
+Cloud Load Balancing,Google Compute Engine,32
+Cloud Load Balancing,Virtual Private Cloud (VPC),31
+Google Kubernetes Engine,Virtual Private Cloud (VPC),31
+Google Compute Engine,Virtual Private Cloud (VPC),31
+Cloud Identity,Cloud Run,23
+Cloud Identity,Google Kubernetes Engine,23
+BigQuery,Cloud Identity,23
+Cloud Identity,Cloud Storage,23
+Cloud Storage,Google Kubernetes Engine,22
+BigQuery,Cloud Storage,22
+Cloud Run,Google Kubernetes Engine,22
+BigQuery,Google Kubernetes Engine,22
+BigQuery,Cloud Run,22
+Cloud Run,Cloud Storage,22
+Cloud Identity,Cloud Spanner,2
+Cloud Spanner,Cloud Storage,2
+Cloud SQL,Google Kubernetes Engine,2
+Cloud Spanner,Virtual Private Cloud (VPC),2
+Cloud Identity,Cloud Load Balancing,1
+BigQuery,Cloud Load Balancing,1
+Cloud SQL,Google Compute Engine,1
+Cloud Run,Google Compute Engine,1
+Cloud Load Balancing,Cloud Spanner,1
+Cloud Spanner,Google Kubernetes Engine,1

@@ -1,0 +1,11 @@
+Service,Centrality_Score
+Google Kubernetes Engine,0.1388888888888889
+Cloud Run,0.06944444444444445
+Google Compute Engine,0.05555555555555555
+BigQuery,0.013888888888888888
+Cloud Spanner,0.013888888888888888
+Virtual Private Cloud (VPC),0.0
+Cloud Load Balancing,0.0
+Cloud Storage,0.0
+Cloud Identity,0.0
+Cloud SQL,0.0

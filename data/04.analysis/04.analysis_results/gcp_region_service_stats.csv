@@ -1,0 +1,11 @@
+Region,Service,Count
+Global,BigQuery,26
+Global,Cloud Identity,32
+Global,Cloud Load Balancing,38
+Global,Cloud Run,29
+Global,Cloud SQL,25
+Global,Cloud Spanner,12
+Global,Cloud Storage,27
+Global,Google Compute Engine,62
+Global,Google Kubernetes Engine,91
+Global,Virtual Private Cloud (VPC),36

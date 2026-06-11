@@ -1,0 +1,378 @@
+Amazon CloudFront (Global) - February 10, 2026
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Change Propagation Delays
+Event details
+Start time
+February 10, 2026, 1:15:00 PM (PST)
+Last update time
+February 10, 2026, 8:18:32 PM (PST)
+Region
+Global
+Service
+Amazon CloudFront
+Severity
+Impacted
+Description
+1:15 PM PST We are investigating DNS resolution failures for some specific CloudFront distributions. We are actively investigating and will provide additional information in the next 30-60 minutes.
+1:40 PM PST We can confirm errors for DNS resolution for some CloudFront distributions. During this time, customers may receive an NXDOMAIN response. Additionally, customers may also experience delayed propagation for changes to CloudFront distributions. We have identified the root cause of the issue and are actively working on multiple paths to resolving the errors. We have verified that our initial mitigation effort on a portion of the affected subsystem was successful, and we are actively working toward performing that mitigation across the fleet. We recommend customers continue to retry any failed requests while we work toward mitigation. A few services that use CloudFront distributions for delivering content may also be affected at this time.
+1:46 PM PST We are seeing early signs of recovery, and continue to work toward full recovery.
+1:58 PM PST We can confirm significant recovery for the DNS resolution errors for CloudFront distributions. Customers are still experiencing delays propagating changes to CloudFront distributions. We continue to work toward full recovery and will provide additional information in the next 30-60 minutes.
+2:34 PM PST We can confirm full recovery for DNS resolution errors for CloudFront Distributions. Due to some of the mitigation actions we have taken, customers will experience delays in propagating changes to CloudFront distributions, including the creation of new CloudFront distributions. We continue to work toward recovering change propagation delays and will provide an update in the next 30-60 minutes.
+3:06 PM PST We continue to work toward mitigating the current issue, which is delays in propagating changes to CloudFront distributions. Cache invalidation is not affected by this issue. In parallel, we are actively investigating options to increase the velocity of our recovery efforts. In order to ensure that we do not cause additional impact, we are proceeding cautiously but safely. During this time, customers can continue making changes but these changes will not propagate until we’ve fully mitigated this issue. We expect full recovery is a couple hours away.
+4:02 PM PST We continue to apply mitigation steps for delays in propagating changes to CloudFront distributions. We are actively engaged and working on two parallel paths to mitigate the issue. Customers changes to CloudFront distributions will not propagate until we’ve fully mitigated this issue. End-user requests for content delivery from our edge locations and invalidations are being served normally at this stage. We expect full recovery in 2-3 hours. We will provide another update within 60 minutes, or sooner if information becomes available.
+5:01 PM PST We are on track to apply mitigations towards resolving the change propagation delays to CloudFront distributions. We are implementing the mitigations in a striped manner on the affected systems that consume the configurations on the edge pops. Customers changes to CloudFront distributions will not propagate until we’ve fully mitigated this issue. End-user requests for content delivery from our edge locations and invalidations are being served normally at this stage. We expect full recovery in approximately 2 hours. We will provide another update within 60 minutes, or sooner if information becomes available.
+6:06 PM PST We continue to work toward mitigating the change propagation delays to CloudFront distributions. We have further confirmed that the delayed propagation impact is limited to certain types of changes, such as creating/deleting distributions, or updating the distributions for DNS or TLS certificate related changes. End-user requests for content delivery from our edge locations and invalidations are being served normally at this stage. Our recovery is taking longer than anticipated in the previous update and we now estimate another 2 hours for full recovery. We will provide another update within 60 minutes, or sooner if information becomes available.
+7:06 PM PST We continue to make progress towards mitigating the change propagation delays to CloudFront distributions. We have completed a successful configuration updates to a set of edge pops and are now propagating to edge pops in other stripes. The delayed propagation impact is limited to certain types of changes, such as creating/deleting distributions, or updating the distributions for DNS or TLS certificate related changes. End-user requests for content delivery from our edge locations and invalidations continue to be served normally at this stage. We estimate approximately 60 minutes for full recovery.
+8:18 PM PST Between 12:20 PM and 1:55 PM PST, we experienced elevated DNS resolution errors for CloudFront distributions served from a subset of edge locations globally. During this time, customers may have received NXDOMAIN responses. Engineers were automatically engaged, immediately began investigating in multiple parallel paths and mitigated errors by taking the affected fleet of DNS servers out of service. Additionally, between 12:20 PM and 8:08 PM PST, we experienced longer than usual propagation times for changes to CloudFront configurations. The propagation delay was limited to certain types of changes, such as creating/deleting distributions, or updating the distributions for DNS or TLS certificate related changes. Following mitigation of the DNS resolution errors at 1:55 PM, end-user requests for content delivery from our edge locations were not affected and are being served normally. Invalidations operated normally throughout the event. Both issues have been resolved and all services are operating normally. We are confident this issue will not reoccur.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (7 services)
+AWS AppSync
+AWS Transfer Family
+AWS WAF
+Amazon API Gateway
+Amazon Pinpoint
+Amazon Route 53
+Amazon VPC Lattice
+
+
+AWS Identity and Access Management (Global) - September 26, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased Error Rates and Latencies
+Event details
+Start time
+September 26, 2025, 8:25:27 PM (PDT)
+Last update time
+September 26, 2025, 8:58:12 PM (PDT)
+Region
+Global
+Service
+AWS Identity and Access Management
+Severity
+Impacted
+Description
+8:25 PM PDT We are investigating increased error rates and latencies for the IAM APIs.
+8:58 PM PDT Between 7:59 PM and 8:32 PM PDT we experienced increased error rates and latencies for IAM API requests. Engineers were engaged at 8:02 PM and immediately began working on both mitigation and identification of root cause. Mitigations were applied by 8:28 PM and full recovery was observed by 8:32 PM. Authentication and authorization based on existing users, credentials, roles, and policies were not impacted during this time. Other AWS Services were also affected during this time. We do not expect this issue to reoccur. We recommend customers retry failed requests. The issue has been resolved and all AWS services are operating normally.
+
+
+
+AWS Management Console (Global) - September 8, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Management Console Error Rates
+Event details
+Start time
+September 8, 2025, 12:38:04 AM (PDT)
+Last update time
+September 8, 2025, 1:43:00 AM (PDT)
+Region
+Global
+Service
+AWS Management Console
+Severity
+Impacted
+Description
+12:38 AM PDT We are investigating increased error rates for the AWS Management Console in the EU-CENTRAL-1 Region. We will provide another update in the next 30-45 minutes.
+1:05 AM PDT We are seeing significant signs of recovery and continue to monitor for full recovery.
+1:43 AM PDT Between September 7 11:32 PM and September 8 12:33 AM PDT, we experienced increased error rates when attempting to access the AWS Management Console in the EU-CENTRAL-1 Region. During this time, customers may have experienced connectivity issues, including accessing the Management Console and AWS Service Endpoints (such as sts.eu-central-1.amazonaws.com). Engineers were automatically engaged at 11:35 PM and immediately began investigating the root cause. At 12:28 AM, we identified the root cause as a networking issue. By 12:33 AM, we had mitigated the underlying root cause and continued to monitor for full recovery. We recommend customers retry any failed requests during this period. We do not expect this issue to reoccur. The issue has been resolved and all AWS Services are operating normally.
+
+
+
+AWS Identity and Access Management (Global) - August 27, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased error rates and latency
+Event details
+Start time
+August 27, 2025, 12:01:59 PM (PDT)
+Last update time
+August 27, 2025, 12:16:00 PM (PDT)
+Region
+Global
+Service
+AWS Identity and Access Management
+Severity
+Impacted
+Description
+12:01 PM PDT We are investigating increased error rates and latency issues in the EU-SOUTH-2 Region.
+12:04 PM PDT We are seeing initial signs of recovery. We will provide an additional update by 12:20 PM PDT.
+12:16 PM PDT Between 11:35 AM and 11:58 AM PDT, we experienced increased API error rates for the IAM service in the EU-SOUTH-2 Region. Engineers were automatically alerted at 11:37 AM and began working on investigating root cause and mitigating impact. By 11:43 AM we understood the issue to be related to a planned networking configuration change. The change was reverted and we began seeing significant signs of recovery at 11:58 AM. During this time, other AWS services' APIs and workflows may also have experienced increased error rates and latencies. The issue is resolved and all AWS services are operating normally.
+
+
+
+AWS IAM Identity Center (Sydney) - August 26, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased sign-in errors
+Event details
+Start time
+August 26, 2025, 1:52:23 PM (PDT)
+Last update time
+August 26, 2025, 2:44:49 PM (PDT)
+Region
+Sydney (ap-southeast-2)
+Service
+AWS IAM Identity Center
+Severity
+Impacted
+Description
+1:52 PM PDT We are investigating increased sign-in errors with SSO in the AP-SOUTHEAST-2 Region.
+2:14 PM PDT We can confirm errors when attempting to sign-in to the AWS Management Console using IAM Identity Center. We have identified the root cause as a recent change to an underlying subsystem in the sign-in path. We have rolled this change back and continue to work on fully mitigating issue. We will provide an update by 2:45 PM PDT.
+2:24 PM PDT We have started to see initial signs of recovery and continue to work towards full resolution. We recommend customers hard refresh the sign-in page before retrying authentication attempts.
+2:44 PM PDT Between 11:23 AM and 2:15 PM PDT, we experienced increased errors when attempting to sign-in to the AWS Management Console using IAM Identity Center in the AP-SOUTHEAST-2 Region. Engineers were automatically engaged at 11:28 AM and immediately began investigating the root cause. At 12:09 PM, we identified the root cause as a recent change to an underlying subsystem in the sign-in path and immediately began rolling this change back. By 2:15 PM, we had mitigated the underlying root cause and continued to monitor for full recovery. We recommend customers hard refresh the sign-in page before retrying authentication attempts if they continue to experience an error. We do not expect this issue to reoccur. The issue has been resolved and the service is operating normally.
+
+
+AWS Glue (Tokyo) - July 28, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Glue 5.0 Job Run Failures
+Event details
+Start time
+July 28, 2025, 7:23:00 PM (PDT)
+Last update time
+July 28, 2025, 8:04:00 PM (PDT)
+Region
+Tokyo (ap-northeast-1)
+Service
+AWS Glue
+Severity
+Impacted
+Description
+7:23 PM PDT AP-NORTHEAST-1 リージョンの Glue 5.0 ジョブ実行の失敗について調査を行なっています。| We are investigating Glue 5.0 job run failures in the AP-NORTHEAST-1 Region.
+7:44 PM PDT 日本時間 7 月 29 日 09:04 より、AP-NORTHEAST-1 リージョンにおいて Glue 5.0 ジョブ実行が失敗し始めました。私たちは根本原因が直近の設定変更であることを特定しました。私たちは積極的に取り組み、問対解消に向けて複数の並行した方針で対応しています。Glue 4.0 またはそれより低いバージョンをご利用のお客様は影響を受けません。今後 30 - 60 分以内に、またはご案内できる更新情報があり次第、更新情報を提供する予定です。 | Starting at 5:04 PM PDT, we began experiencing Glue 5.0 job run failures in the AP-NORTHEAST-1 Region. We have identified the root cause to be a recent configuration change. We are actively engaged and working on multiple parallel paths to mitigate the issue. Customers using Glue 4.0 or below are unaffected. We will provide additional information within the next 30-60 minutes, or sooner if we have additional information to share.
+8:04 PM PDT 日本時間 7 月 29 日 09:04 から 11:46 の間、AP-NORTHEAST-1 リージョンにおいて Glue 5.0 ジョブ実行が失敗する事象が発生しました。Glue 4.0 またはそれより低いバージョンをご利用のお客様は影響を受けませんでした。エンジニアは 10:02 に自動的に招集され、根本原因の特定と問題解消に向けて、複数の並行した方針で対応し始めました。10:42 に、私たちは影響を受けたお客様に AWS Health Dashboard の Your Account ビュー (アカウントの状態) 経由でお知らせしました。11:30 に、私たちは根本原因が直近の設定変更であると特定し、ロールバックを行いました。11:46 に私たちは事象を完全に解消しました。この時間に失敗したジョブは再実行することを推奨します。問題は解決し、サービスは正常に動作しています。 | Between 5:04 PM and 7:46 PM PDT, we experienced Glue 5.0 job run failures in the AP-NORTHEAST-1 Region. Customers using Glue 4.0 and below were unaffected. Engineers were automatically engaged at 6:02 PM, and began working on multiple parallel paths to identify the root cause and mitigate the issue. At 6:42 PM, we communicated to impacted customers via the Your Account view of the AWS Health Dashboard. At 7:30 PM, we identified the root cause to be a recent configuration change and have rolled back. At 7:46 PM, we had fully mitigated the issue. We recommend customers resubmit any failed jobs during this time. The issue has been resolved and the service is operating normally.
+
+
+AWS App Runner (Singapore) - June 22, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased Error Rates
+Event details
+Start time
+June 22, 2025, 10:10:00 PM (PDT)
+Last update time
+June 22, 2025, 11:02:25 PM (PDT)
+Region
+Singapore (ap-southeast-1)
+Service
+AWS App Runner
+Severity
+Impacted
+Description
+10:10 PM PDT We are investigating increased API error rates for applications hosted on App Runner in the AP-SOUTHEAST-1 Region.
+10:34 PM PDT We are beginning to see early signs of recovery, and continue to work toward full recovery.
+11:02 PM PDT Between 3:30 PM and 10:34 PM PDT we experienced increased error rates for requests made to applications hosted on App Runner in the AP-SOUTHEAST-1 Region. During this time, requests to applications running on App Runner may have returned a 404 Not Found error. Additionally, operations such as Creating or Updating App Runner services were also impacted by this issue. Engineers were automatically engaged at 3:42 PM, and began working on identifying the root cause. In parallel, we began working on multiple paths to mitigate the issue. At 7:59 PM, we communicated to impacted customers via the Your Account view of the AWS Health Dashboard. At 10:13 PM, we identified the root cause to be an issue with the subsystem responsible for request routing. By 10:32 PM, we had implemented our mitigation and began to observe error rates decrease. At 10:34 PM, we had fully mitigated the issue. We recommend customers retry any failed requests during this time. The issue has been resolved and the service is operating normally.
+
+
+Amazon Elastic Compute Cloud (Tokyo) - June 4, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Network Connectivity and Increased Error Rates
+Event details
+Start time
+June 4, 2025, 9:06:00 PM (PDT)
+Last update time
+June 4, 2025, 9:06:00 PM (PDT)
+Region
+Tokyo (ap-northeast-1)
+Service
+Amazon Elastic Compute Cloud
+Severity
+Impacted
+Description
+9:06 PM PDT 日本時間 6 月 5 日 11:26 から 12:13 にかけて、AP-NORTHEAST-1 リージョンの単一のアベイラビリティーゾーン (apne1-az1) において、パケットロスとレイテンシーの増加が発生しました。この問題は解決し、サービスは正常に動作しています。| Between 7:26 PM and 8:13 PM PDT we experienced increased packet loss and latency in a single Availability Zone (apne1-az1) in the AP-NORTHEAST-1 Region. The issue has been resolved and services are operating normally.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (7 services)
+AWS Direct Connect
+AWS Transit Gateway
+AWS VPCE PrivateLink
+Amazon API Gateway
+Amazon ElastiCache
+Amazon Relational Database Service
+Amazon VPC Lattice
+
+
+Multiple services (Hyderabad) - May 29, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Elevated API error rates and connectivity issues in the AP-SOUTH-2 Region
+Event details
+Start time
+May 29, 2025, 10:29:18 AM (PDT)
+Last update time
+May 29, 2025, 11:13:00 AM (PDT)
+Region
+Hyderabad (ap-south-2)
+Service
+Multiple services
+Severity
+Impacted
+Description
+10:29 AM PDT We are investigating elevated API Error rates and connectivity issues in the AP-SOUTH-2 Region.
+10:45 AM PDT We are experiencing elevated API Error rates and connectivity issues in the AP-SOUTH-2 Region. We have identified the cause and are working to mitigate this issue now. We will provide you with another update by 11:15 AM PDT.
+11:00 AM PDT We are seeing recovery for the elevated API Error rates and connectivity issues in the AP-SOUTH-2 Region, and monitoring for full recovery.
+11:13 AM PDT At 10:08 AM PDT, we began experiencing elevated API error rates and connectivity issues in the AP-SOUTH-2 Region. We were automatically notified of the issue at 10:13 AM when we began to investigate the root cause so we could identify a mitigation strategy. We were able to isolate the root cause at 10:22 AM and began implementing a mitigation. We began to see early signs of recovery at 10:55 AM and full recovery by 11:06 AM. The issue has been resolved and the services are operating normally.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (49 services)
+AWS AppSync
+AWS Backup
+AWS Certificate Manager
+AWS Cloud WAN
+AWS CloudFormation
+AWS DataSync
+AWS Elastic Disaster Recovery
+AWS Fargate
+AWS Glue
+AWS Identity and Access Management Roles Anywhere
+AWS Key Management Service
+AWS Lambda
+AWS NAT Gateway
+AWS Private CA Connector for Active Directory
+AWS Private CA Connector for SCEP
+AWS Private Certificate Authority
+AWS Resource Access Manager
+AWS Resource Explorer
+AWS Security Token Service
+AWS Step Functions
+AWS Systems Manager
+AWS Transit Gateway
+AWS VPCE PrivateLink
+Amazon API Gateway
+Amazon Athena
+Amazon CloudWatch
+Amazon CloudWatch RUM
+Amazon Cognito
+Amazon DocumentDB
+Amazon DynamoDB
+Amazon Elastic Compute Cloud
+Amazon Elastic Container Service
+Amazon Elastic Kubernetes Service
+Amazon Elastic Load Balancing
+Amazon Elastic MapReduce
+Amazon EventBridge
+Amazon EventBridge Scheduler
+Amazon Kinesis Data Streams
+Amazon Managed Service for Apache Flink
+Amazon Managed Streaming for Apache Kafka
+Amazon Redshift
+Amazon Relational Database Service
+Amazon Route 53 Resolver
+Amazon SageMaker
+Amazon Simple Notification Service
+Amazon Simple Queue Service
+Amazon Simple Storage Service
+Amazon Simple Workflow Service
+Traffic Mirroring
+
+
+Amazon CloudFront (Global) - May 1, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased propagation times
+Event details
+Start time
+May 1, 2025, 6:26:00 AM (PDT)
+Last update time
+May 1, 2025, 9:34:37 AM (PDT)
+Region
+Global
+Service
+Amazon CloudFront
+Severity
+Impacted
+Description
+6:26 AM PDT We can confirm increased propagation times for invalidations to CloudFront configurations. End-user requests for content from our edge locations are not affected by this issue and are being served normally. We will provide another update within 30 minutes, or sooner if information becomes available.
+6:53 AM PDT We have identified the specific component causing the increased propagation times for invalidations to CloudFront configurations and are implementing necessary changes to restore normal service operations. Our engineers are actively working on a fix, but at this time, there are no temporary workarounds available. End-user requests for content from our edge locations are not affected by this issue and are being served normally. We will provide another update within 40 minutes, or sooner if information becomes available.
+7:30 AM PDT We continue work on mitigating the longer than usual invalidation times for Amazon CloudFront. The root cause is related to a recent configuration change. Our engineers are actively working on implementing and testing mitigation measures on one of the CloudFront edge pops to validate resolution before deploying broader. End-user requests for content from our edge locations are not affected by this issue and are being served normally. No customer action is required at this time. We will provide another update within 40 minutes, or sooner if information becomes available.
+8:15 AM PDT We have successfully tested our mitigation plan for the increased CloudFront invalidation propagation times and are now beginning to deploy the fix in our production environment. Our testing has validated that this solution will restore normal invalidation processing times. End-user requests for content from our edge locations continue to be unaffected by this issue and are being served normally. We are progressing down a definite path of recovery and will have an ETA on recovery in 30 minutes.
+8:44 AM PDT We are continuing to deploy our mitigation plan for the increased CloudFront invalidation propagation times across our production environment. Our initial testing and deployment has shown positive results in restoring normal invalidation processing times. We expect full recovery within the next 60 minutes as we carefully roll out the fix across our infrastructure. End-user requests for content from our edge locations continue to be unaffected by this issue and are being served normally. No customer action is required at this time. We will provide another update within 30 minutes, or sooner if information becomes available.
+9:16 AM PDT The deployment of our fix for the increased CloudFront invalidation propagation times continues to progress as expected. We remain on track to complete the full deployment within the next 30 minutes. End-user requests for content from our edge locations continue to be unaffected by this issue and are being served normally. No customer action is required at this time. We will provide another update within 30 minutes, or sooner if information becomes available.
+9:34 AM PDT Between 4:59 AM and 9:30 AM PDT, we experienced increased propagation times for invalidations to CloudFront configurations. During this time, customers observed longer than usual wait times for their CloudFront invalidations to propagate across our edge locations. End-user requests for content from our edge locations were not affected by this issue and continued to be served normally throughout the event. Our engineers identified that the root cause was related to a recent configuration change affecting the CloudFront invalidation system. After identifying the specific component causing the increased propagation times, we implemented and tested a fix on one edge location to validate the resolution before deploying it more broadly. By 9:30 AM PDT, we had successfully deployed the fix across our network, and invalidation propagation times have returned to normal levels. No customer action is required. Any invalidation requests that were delayed during this period have now been processed. The issue has been resolved and the service is operating normally.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (1 service)
+AWS Amplify
+
+
+
+Amazon Elastic Compute Cloud (Tokyo) - April 15, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Connectivity Issues
+Event details
+Start time
+April 15, 2025, 1:15:00 AM (PDT)
+Last update time
+April 15, 2025, 1:51:00 AM (PDT)
+Region
+Tokyo (ap-northeast-1)
+Service
+Amazon Elastic Compute Cloud
+Severity
+Impacted
+Description
+1:15 AM PDT 現在、AP-NORTHEAST-1 リージョンの単一アベイラビリティーゾーン (apne1-az4) のインスタンスに影響している接続問題を調査しています。 | We are investigating connectivity issues affecting instances in a single Availability Zone (apne1-az4) in the AP-NORTHEAST-1 Region.
+1:21 AM PDT 回復の兆しが見られ始めていますが、AWSは完全な回復に向けて引き続き注視し、取り組んでいます。他の AWS サービスもこの問題の影響を受けており、これらも回復の兆しが見られております。30〜60分以内に次のアップデートをご提供します。 | We are seeing initial signs of recovery but continue to monitor and work toward full recovery. Other AWS services are also impacted by this issue, and are also observing recovery. We will provide another update within the next 30-60 minutes.
+1:51 AM PDT 午後 4:40 から午後 5:43 (日本時間) の間、AP-NORTHEAST-1 リージョンの単一のアベイラビリティーゾーン (apne1-az4) において、一部の EC2 インスタンスへの接続の問題が発生しました。これは、影響を受けた EC2 インスタンスへの主電源と二次電源が遮断されたことが原因でした。この間、お客さまは、影響を受けたアベイラビリティゾーンで起動されたインスタンスや、影響を受けた EC2 インスタンスを使用する他の AWS API において、エラー率やレイテンシーの増加の影響を受けた可能性があります。エンジニアは数分以内に自動的に対応し、すぐに緩和策の調査を開始しました。この問題は再発しないことが期待されています。残りの少数のインスタンスは、停電による悪影響を受けたハードウェアでホストされています。影響を受けたすべてのインスタンスとボリュームの復旧に引き続き取り組んでいきますが、即座に復旧を行うためには、可能であれば、影響が残存しているインスタンスまたはボリュームを交換することをお勧めします。事象は解決し、サービスは正常に動作しています。 | Between 12:40 AM and 1:43 AM PDT, we experienced connectivity issues to a subset of EC2 instances in a single Availability Zone (apne1-az4) in the AP-NORTHEAST-1 Region. This was the result of an issue in which the primary and secondary power was interrupted to the affected EC2 instances. During this time, customers may also have experienced increased error rates and latencies for instances launched in the affected zone, along with other AWS APIs that use the affected EC2 instances. Engineers were automatically engaged within minutes and immediately began investigating mitigations. We do not expect this issue to recur. The small number of remaining instances are hosted on hardware which was adversely affected by the loss of power. While we will continue to work to recover all affected instances and volumes, for immediate recovery, we recommend replacing any remaining affected instances or volumes if possible. The issue has been resolved and the service is operating normally.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (15 services)
+AWS CodeCommit
+AWS Lambda
+AWS NAT Gateway
+AWS Network Firewall
+AWS Systems Manager
+AWS Transit Gateway
+AWS VPCE PrivateLink
+Amazon CloudWatch
+Amazon Elastic Container Service
+Amazon Elastic Load Balancing
+Amazon Location Service
+Amazon Redshift
+Amazon Relational Database Service
+Amazon Simple Storage Service
+Amazon WorkSpaces
+
+

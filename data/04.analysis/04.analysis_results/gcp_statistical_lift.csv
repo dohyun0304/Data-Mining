@@ -1,0 +1,27 @@
+Service_A,Service_B,Co_Occur_Count,Lift,P_Value,Significant
+BigQuery,Cloud Storage,22,4.7,0.0000,Yes
+BigQuery,Cloud Run,22,4.38,0.0000,Yes
+Cloud Run,Cloud Storage,22,4.21,0.0000,Yes
+BigQuery,Cloud Identity,23,4.15,0.0000,Yes
+Cloud Identity,Cloud Storage,23,3.99,0.0000,Yes
+Cloud Identity,Cloud Run,23,3.72,0.0000,Yes
+Cloud Load Balancing,Virtual Private Cloud (VPC),31,3.4,0.0000,Yes
+Google Compute Engine,Virtual Private Cloud (VPC),31,2.08,0.0000,Yes
+Cloud Load Balancing,Google Compute Engine,32,2.04,0.0000,Yes
+Google Compute Engine,Google Kubernetes Engine,56,1.49,0.0000,Yes
+Cloud Load Balancing,Google Kubernetes Engine,34,1.47,0.0000,Yes
+Google Kubernetes Engine,Virtual Private Cloud (VPC),31,1.42,0.0002,Yes
+BigQuery,Google Kubernetes Engine,22,1.39,0.0042,Yes
+Cloud Storage,Google Kubernetes Engine,22,1.34,0.0109,Yes
+Cloud Run,Google Kubernetes Engine,22,1.25,0.0468,Yes
+Cloud Identity,Google Kubernetes Engine,23,1.18,0.1028,No
+Cloud Spanner,Cloud Storage,2,0.93,0.6753,No
+Cloud Identity,Cloud Spanner,2,0.78,0.7729,No
+Cloud Spanner,Virtual Private Cloud (VPC),2,0.69,0.8336,No
+Cloud Load Balancing,Cloud Spanner,1,0.33,0.9744,No
+BigQuery,Cloud Load Balancing,1,0.15,0.9998,No
+Cloud Spanner,Google Kubernetes Engine,1,0.14,1.0000,No
+Cloud SQL,Google Kubernetes Engine,2,0.13,1.0000,No
+Cloud Identity,Cloud Load Balancing,1,0.12,1.0000,No
+Cloud SQL,Google Compute Engine,1,0.1,1.0000,No
+Cloud Run,Google Compute Engine,1,0.08,1.0000,No

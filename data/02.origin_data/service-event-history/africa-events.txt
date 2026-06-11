@@ -1,0 +1,147 @@
+Amazon CloudFront (Global) - February 10, 2026
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Change Propagation Delays
+Event details
+Start time
+February 10, 2026, 1:15:00 PM (PST)
+Last update time
+February 10, 2026, 8:18:32 PM (PST)
+Region
+Global
+Service
+Amazon CloudFront
+Severity
+Impacted
+Description
+1:15 PM PST We are investigating DNS resolution failures for some specific CloudFront distributions. We are actively investigating and will provide additional information in the next 30-60 minutes.
+1:40 PM PST We can confirm errors for DNS resolution for some CloudFront distributions. During this time, customers may receive an NXDOMAIN response. Additionally, customers may also experience delayed propagation for changes to CloudFront distributions. We have identified the root cause of the issue and are actively working on multiple paths to resolving the errors. We have verified that our initial mitigation effort on a portion of the affected subsystem was successful, and we are actively working toward performing that mitigation across the fleet. We recommend customers continue to retry any failed requests while we work toward mitigation. A few services that use CloudFront distributions for delivering content may also be affected at this time.
+1:46 PM PST We are seeing early signs of recovery, and continue to work toward full recovery.
+1:58 PM PST We can confirm significant recovery for the DNS resolution errors for CloudFront distributions. Customers are still experiencing delays propagating changes to CloudFront distributions. We continue to work toward full recovery and will provide additional information in the next 30-60 minutes.
+2:34 PM PST We can confirm full recovery for DNS resolution errors for CloudFront Distributions. Due to some of the mitigation actions we have taken, customers will experience delays in propagating changes to CloudFront distributions, including the creation of new CloudFront distributions. We continue to work toward recovering change propagation delays and will provide an update in the next 30-60 minutes.
+3:06 PM PST We continue to work toward mitigating the current issue, which is delays in propagating changes to CloudFront distributions. Cache invalidation is not affected by this issue. In parallel, we are actively investigating options to increase the velocity of our recovery efforts. In order to ensure that we do not cause additional impact, we are proceeding cautiously but safely. During this time, customers can continue making changes but these changes will not propagate until we’ve fully mitigated this issue. We expect full recovery is a couple hours away.
+4:02 PM PST We continue to apply mitigation steps for delays in propagating changes to CloudFront distributions. We are actively engaged and working on two parallel paths to mitigate the issue. Customers changes to CloudFront distributions will not propagate until we’ve fully mitigated this issue. End-user requests for content delivery from our edge locations and invalidations are being served normally at this stage. We expect full recovery in 2-3 hours. We will provide another update within 60 minutes, or sooner if information becomes available.
+5:01 PM PST We are on track to apply mitigations towards resolving the change propagation delays to CloudFront distributions. We are implementing the mitigations in a striped manner on the affected systems that consume the configurations on the edge pops. Customers changes to CloudFront distributions will not propagate until we’ve fully mitigated this issue. End-user requests for content delivery from our edge locations and invalidations are being served normally at this stage. We expect full recovery in approximately 2 hours. We will provide another update within 60 minutes, or sooner if information becomes available.
+6:06 PM PST We continue to work toward mitigating the change propagation delays to CloudFront distributions. We have further confirmed that the delayed propagation impact is limited to certain types of changes, such as creating/deleting distributions, or updating the distributions for DNS or TLS certificate related changes. End-user requests for content delivery from our edge locations and invalidations are being served normally at this stage. Our recovery is taking longer than anticipated in the previous update and we now estimate another 2 hours for full recovery. We will provide another update within 60 minutes, or sooner if information becomes available.
+7:06 PM PST We continue to make progress towards mitigating the change propagation delays to CloudFront distributions. We have completed a successful configuration updates to a set of edge pops and are now propagating to edge pops in other stripes. The delayed propagation impact is limited to certain types of changes, such as creating/deleting distributions, or updating the distributions for DNS or TLS certificate related changes. End-user requests for content delivery from our edge locations and invalidations continue to be served normally at this stage. We estimate approximately 60 minutes for full recovery.
+8:18 PM PST Between 12:20 PM and 1:55 PM PST, we experienced elevated DNS resolution errors for CloudFront distributions served from a subset of edge locations globally. During this time, customers may have received NXDOMAIN responses. Engineers were automatically engaged, immediately began investigating in multiple parallel paths and mitigated errors by taking the affected fleet of DNS servers out of service. Additionally, between 12:20 PM and 8:08 PM PST, we experienced longer than usual propagation times for changes to CloudFront configurations. The propagation delay was limited to certain types of changes, such as creating/deleting distributions, or updating the distributions for DNS or TLS certificate related changes. Following mitigation of the DNS resolution errors at 1:55 PM, end-user requests for content delivery from our edge locations were not affected and are being served normally. Invalidations operated normally throughout the event. Both issues have been resolved and all services are operating normally. We are confident this issue will not reoccur.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (7 services)
+AWS AppSync
+AWS Transfer Family
+AWS WAF
+Amazon API Gateway
+Amazon Pinpoint
+Amazon Route 53
+Amazon VPC Lattice
+
+
+AWS Identity and Access Management (Global) - September 26, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased Error Rates and Latencies
+Event details
+Start time
+September 26, 2025, 8:25:27 PM (PDT)
+Last update time
+September 26, 2025, 8:58:12 PM (PDT)
+Region
+Global
+Service
+AWS Identity and Access Management
+Severity
+Impacted
+Description
+8:25 PM PDT We are investigating increased error rates and latencies for the IAM APIs.
+8:58 PM PDT Between 7:59 PM and 8:32 PM PDT we experienced increased error rates and latencies for IAM API requests. Engineers were engaged at 8:02 PM and immediately began working on both mitigation and identification of root cause. Mitigations were applied by 8:28 PM and full recovery was observed by 8:32 PM. Authentication and authorization based on existing users, credentials, roles, and policies were not impacted during this time. Other AWS Services were also affected during this time. We do not expect this issue to reoccur. We recommend customers retry failed requests. The issue has been resolved and all AWS services are operating normally.
+
+
+AWS Management Console (Global) - September 8, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Management Console Error Rates
+Event details
+Start time
+September 8, 2025, 12:38:04 AM (PDT)
+Last update time
+September 8, 2025, 1:43:00 AM (PDT)
+Region
+Global
+Service
+AWS Management Console
+Severity
+Impacted
+Description
+12:38 AM PDT We are investigating increased error rates for the AWS Management Console in the EU-CENTRAL-1 Region. We will provide another update in the next 30-45 minutes.
+1:05 AM PDT We are seeing significant signs of recovery and continue to monitor for full recovery.
+1:43 AM PDT Between September 7 11:32 PM and September 8 12:33 AM PDT, we experienced increased error rates when attempting to access the AWS Management Console in the EU-CENTRAL-1 Region. During this time, customers may have experienced connectivity issues, including accessing the Management Console and AWS Service Endpoints (such as sts.eu-central-1.amazonaws.com). Engineers were automatically engaged at 11:35 PM and immediately began investigating the root cause. At 12:28 AM, we identified the root cause as a networking issue. By 12:33 AM, we had mitigated the underlying root cause and continued to monitor for full recovery. We recommend customers retry any failed requests during this period. We do not expect this issue to reoccur. The issue has been resolved and all AWS Services are operating normally.
+
+
+
+AWS Identity and Access Management (Global) - August 27, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased error rates and latency
+Event details
+Start time
+August 27, 2025, 12:01:59 PM (PDT)
+Last update time
+August 27, 2025, 12:16:00 PM (PDT)
+Region
+Global
+Service
+AWS Identity and Access Management
+Severity
+Impacted
+Description
+12:01 PM PDT We are investigating increased error rates and latency issues in the EU-SOUTH-2 Region.
+12:04 PM PDT We are seeing initial signs of recovery. We will provide an additional update by 12:20 PM PDT.
+12:16 PM PDT Between 11:35 AM and 11:58 AM PDT, we experienced increased API error rates for the IAM service in the EU-SOUTH-2 Region. Engineers were automatically alerted at 11:37 AM and began working on investigating root cause and mitigating impact. By 11:43 AM we understood the issue to be related to a planned networking configuration change. The change was reverted and we began seeing significant signs of recovery at 11:58 AM. During this time, other AWS services' APIs and workflows may also have experienced increased error rates and latencies. The issue is resolved and all AWS services are operating normally.
+
+
+
+Amazon CloudFront (Global) - May 1, 2025
+Impacted
+
+
+This service was affected by the following event:
+
+[RESOLVED] Increased propagation times
+Event details
+Start time
+May 1, 2025, 6:26:00 AM (PDT)
+Last update time
+May 1, 2025, 9:34:37 AM (PDT)
+Region
+Global
+Service
+Amazon CloudFront
+Severity
+Impacted
+Description
+6:26 AM PDT We can confirm increased propagation times for invalidations to CloudFront configurations. End-user requests for content from our edge locations are not affected by this issue and are being served normally. We will provide another update within 30 minutes, or sooner if information becomes available.
+6:53 AM PDT We have identified the specific component causing the increased propagation times for invalidations to CloudFront configurations and are implementing necessary changes to restore normal service operations. Our engineers are actively working on a fix, but at this time, there are no temporary workarounds available. End-user requests for content from our edge locations are not affected by this issue and are being served normally. We will provide another update within 40 minutes, or sooner if information becomes available.
+7:30 AM PDT We continue work on mitigating the longer than usual invalidation times for Amazon CloudFront. The root cause is related to a recent configuration change. Our engineers are actively working on implementing and testing mitigation measures on one of the CloudFront edge pops to validate resolution before deploying broader. End-user requests for content from our edge locations are not affected by this issue and are being served normally. No customer action is required at this time. We will provide another update within 40 minutes, or sooner if information becomes available.
+8:15 AM PDT We have successfully tested our mitigation plan for the increased CloudFront invalidation propagation times and are now beginning to deploy the fix in our production environment. Our testing has validated that this solution will restore normal invalidation processing times. End-user requests for content from our edge locations continue to be unaffected by this issue and are being served normally. We are progressing down a definite path of recovery and will have an ETA on recovery in 30 minutes.
+8:44 AM PDT We are continuing to deploy our mitigation plan for the increased CloudFront invalidation propagation times across our production environment. Our initial testing and deployment has shown positive results in restoring normal invalidation processing times. We expect full recovery within the next 60 minutes as we carefully roll out the fix across our infrastructure. End-user requests for content from our edge locations continue to be unaffected by this issue and are being served normally. No customer action is required at this time. We will provide another update within 30 minutes, or sooner if information becomes available.
+9:16 AM PDT The deployment of our fix for the increased CloudFront invalidation propagation times continues to progress as expected. We remain on track to complete the full deployment within the next 30 minutes. End-user requests for content from our edge locations continue to be unaffected by this issue and are being served normally. No customer action is required at this time. We will provide another update within 30 minutes, or sooner if information becomes available.
+9:34 AM PDT Between 4:59 AM and 9:30 AM PDT, we experienced increased propagation times for invalidations to CloudFront configurations. During this time, customers observed longer than usual wait times for their CloudFront invalidations to propagate across our edge locations. End-user requests for content from our edge locations were not affected by this issue and continued to be served normally throughout the event. Our engineers identified that the root cause was related to a recent configuration change affecting the CloudFront invalidation system. After identifying the specific component causing the increased propagation times, we implemented and tested a fix on one edge location to validate the resolution before deploying it more broadly. By 9:30 AM PDT, we had successfully deployed the fix across our network, and invalidation propagation times have returned to normal levels. No customer action is required. Any invalidation requests that were delayed during this period have now been processed. The issue has been resolved and the service is operating normally.
+Affected AWS services
+The following AWS services have been affected by this issue.
+
+Impacted (1 service)
+AWS Amplify

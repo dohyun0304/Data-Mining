@@ -1,0 +1,18 @@
+Service,Count
+CloudFront,14
+EC2,11
+Lambda,8
+EBS,7
+S3,5
+RDS,5
+CloudWatch,4
+EKS,4
+DynamoDB,4
+IAM,4
+ECS,4
+Redshift,3
+VPC,3
+Kinesis,3
+SQS,2
+API Gateway,2
+Route 53,1

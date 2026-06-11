@@ -1,0 +1,100 @@
+Svc_A,Svc_B,Weight
+EC2,EBS,7
+EC2,RDS,5
+EBS,RDS,4
+Lambda,EKS,4
+S3,EC2,4
+Lambda,ECS,4
+EC2,VPC,3
+DynamoDB,EKS,3
+ECS,CloudWatch,3
+ECS,Redshift,3
+DynamoDB,CloudWatch,3
+Kinesis,ECS,3
+Lambda,Redshift,3
+Lambda,DynamoDB,3
+Lambda,CloudWatch,3
+EKS,ECS,3
+EC2,DynamoDB,3
+EC2,Lambda,3
+DynamoDB,ECS,3
+Lambda,Kinesis,3
+S3,EBS,3
+S3,Lambda,3
+S3,RDS,3
+EC2,ECS,2
+EKS,CloudWatch,2
+EC2,SQS,2
+EC2,EKS,2
+ECS,API Gateway,2
+API Gateway,Redshift,2
+API Gateway,CloudWatch,2
+DynamoDB,Redshift,2
+EC2,CloudWatch,2
+DynamoDB,VPC,2
+DynamoDB,SQS,2
+DynamoDB,Kinesis,2
+RDS,VPC,2
+Redshift,CloudWatch,2
+S3,VPC,2
+S3,ECS,2
+VPC,EKS,2
+VPC,Redshift,2
+VPC,ECS,2
+S3,Redshift,2
+Kinesis,EKS,2
+Kinesis,Redshift,2
+S3,CloudWatch,2
+EC2,Redshift,2
+Lambda,VPC,2
+Lambda,IAM,2
+IAM,EKS,2
+EKS,Redshift,2
+Kinesis,CloudWatch,2
+Lambda,API Gateway,2
+S3,API Gateway,2
+EC2,Kinesis,1
+EKS,API Gateway,1
+ECS,SQS,1
+EBS,VPC,1
+EC2,API Gateway,1
+DynamoDB,Route 53,1
+DynamoDB,IAM,1
+DynamoDB,API Gateway,1
+EC2,Route 53,1
+EC2,IAM,1
+EBS,Lambda,1
+Kinesis,SQS,1
+IAM,VPC,1
+RDS,Lambda,1
+RDS,EKS,1
+RDS,ECS,1
+RDS,DynamoDB,1
+RDS,CloudWatch,1
+RDS,API Gateway,1
+Lambda,SQS,1
+Lambda,Route 53,1
+IAM,SQS,1
+IAM,Redshift,1
+IAM,Kinesis,1
+IAM,ECS,1
+EKS,SQS,1
+Kinesis,API Gateway,1
+Route 53,EKS,1
+RDS,Route 53,1
+S3,DynamoDB,1
+Route 53,Redshift,1
+Route 53,VPC,1
+RDS,Redshift,1
+Route 53,API Gateway,1
+Route 53,CloudWatch,1
+Route 53,ECS,1
+S3,EKS,1
+SQS,CloudWatch,1
+S3,Route 53,1
+S3,Kinesis,1
+SQS,Redshift,1
+VPC,CloudWatch,1
+VPC,API Gateway,1
+VPC,Kinesis,1
+VPC,SQS,1

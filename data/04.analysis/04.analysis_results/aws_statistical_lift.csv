@@ -1,0 +1,100 @@
+Service_A,Service_B,Co_Occur_Count,Lift,P_Value,Significant
+API Gateway,Route 53,1,56.0,0.0179,Yes
+API Gateway,Redshift,2,37.33,0.0005,Yes
+Redshift,Route 53,1,37.33,0.0268,Yes
+Route 53,VPC,1,37.33,0.0268,Yes
+ECS,Redshift,3,28.0,0.0000,Yes
+EKS,Route 53,1,28.0,0.0357,Yes
+ECS,Route 53,1,28.0,0.0357,Yes
+API Gateway,CloudWatch,2,28.0,0.0010,Yes
+DynamoDB,SQS,2,28.0,0.0010,Yes
+API Gateway,ECS,2,28.0,0.0010,Yes
+ECS,Kinesis,3,28.0,0.0000,Yes
+DynamoDB,Route 53,1,28.0,0.0357,Yes
+CloudWatch,Route 53,1,28.0,0.0357,Yes
+Redshift,VPC,2,24.89,0.0014,Yes
+Kinesis,Redshift,2,24.89,0.0014,Yes
+RDS,Route 53,1,22.4,0.0446,Yes
+Route 53,S3,1,22.4,0.0446,Yes
+API Gateway,S3,2,22.4,0.0016,Yes
+ECS,EKS,3,21.0,0.0001,Yes
+CloudWatch,ECS,3,21.0,0.0001,Yes
+DynamoDB,EKS,3,21.0,0.0001,Yes
+DynamoDB,ECS,3,21.0,0.0001,Yes
+CloudWatch,DynamoDB,3,21.0,0.0001,Yes
+DynamoDB,Redshift,2,18.67,0.0029,Yes
+CloudWatch,Redshift,2,18.67,0.0029,Yes
+ECS,VPC,2,18.67,0.0029,Yes
+EKS,VPC,2,18.67,0.0029,Yes
+CloudWatch,Kinesis,2,18.67,0.0029,Yes
+EKS,Kinesis,2,18.67,0.0029,Yes
+DynamoDB,Kinesis,2,18.67,0.0029,Yes
+Kinesis,SQS,1,18.67,0.0531,No
+API Gateway,VPC,1,18.67,0.0531,No
+EKS,Redshift,2,18.67,0.0029,Yes
+DynamoDB,VPC,2,18.67,0.0029,Yes
+API Gateway,Kinesis,1,18.67,0.0531,No
+Redshift,SQS,1,18.67,0.0531,No
+SQS,VPC,1,18.67,0.0531,No
+RDS,VPC,2,14.93,0.0047,Yes
+S3,VPC,2,14.93,0.0047,Yes
+Redshift,S3,2,14.93,0.0047,Yes
+ECS,SQS,1,14.0,0.0705,No
+Kinesis,Lambda,3,14.0,0.0002,Yes
+ECS,Lambda,4,14.0,0.0000,Yes
+CloudWatch,SQS,1,14.0,0.0705,No
+API Gateway,DynamoDB,1,14.0,0.0705,No
+IAM,SQS,1,14.0,0.0705,No
+EKS,SQS,1,14.0,0.0705,No
+Lambda,Route 53,1,14.0,0.0714,No
+EKS,IAM,2,14.0,0.0057,Yes
+Lambda,Redshift,3,14.0,0.0002,Yes
+CloudWatch,EKS,2,14.0,0.0057,Yes
+EKS,Lambda,4,14.0,0.0000,Yes
+API Gateway,Lambda,2,14.0,0.0045,Yes
+API Gateway,EKS,1,14.0,0.0705,No
+RDS,S3,3,13.44,0.0004,Yes
+EBS,RDS,4,12.8,0.0000,Yes
+Kinesis,VPC,1,12.44,0.0789,No
+ECS,S3,2,11.2,0.0093,Yes
+API Gateway,RDS,1,11.2,0.0877,No
+CloudWatch,S3,2,11.2,0.0093,Yes
+CloudWatch,Lambda,3,10.5,0.0009,Yes
+DynamoDB,Lambda,3,10.5,0.0009,Yes
+EC2,RDS,5,10.18,0.0000,Yes
+EBS,EC2,7,10.18,0.0000,Yes
+EC2,Route 53,1,10.18,0.0982,No
+EC2,VPC,3,10.18,0.0007,Yes
+EC2,SQS,2,10.18,0.0088,Yes
+EBS,S3,3,9.6,0.0015,Yes
+CloudWatch,VPC,1,9.33,0.1043,No
+IAM,Kinesis,1,9.33,0.1043,No
+IAM,Redshift,1,9.33,0.1043,No
+IAM,VPC,1,9.33,0.1043,No
+Lambda,VPC,2,9.33,0.0130,Yes
+Lambda,S3,3,8.4,0.0023,Yes
+EC2,S3,4,8.15,0.0003,Yes
+DynamoDB,EC2,3,7.64,0.0027,Yes
+Kinesis,S3,1,7.47,0.1291,No
+RDS,Redshift,1,7.47,0.1291,No
+IAM,Lambda,2,7.0,0.0251,Yes
+Lambda,SQS,1,7.0,0.1384,No
+DynamoDB,IAM,1,7.0,0.1371,No
+ECS,IAM,1,7.0,0.1371,No
+EC2,Redshift,2,6.79,0.0251,Yes
+EKS,S3,1,5.6,0.1691,No
+CloudWatch,RDS,1,5.6,0.1691,No
+DynamoDB,S3,1,5.6,0.1691,No
+EKS,RDS,1,5.6,0.1691,No
+DynamoDB,RDS,1,5.6,0.1691,No
+ECS,RDS,1,5.6,0.1691,No
+EBS,VPC,1,5.33,0.1775,No
+CloudWatch,EC2,2,5.09,0.0475,Yes
+EC2,EKS,2,5.09,0.0475,Yes
+API Gateway,EC2,1,5.09,0.1876,No
+EC2,ECS,2,5.09,0.0475,Yes
+EC2,Lambda,3,3.82,0.0305,Yes
+EC2,Kinesis,1,3.39,0.2688,No
+Lambda,RDS,1,2.8,0.3145,No
+EC2,IAM,1,2.55,0.3426,No
+EBS,Lambda,1,2.0,0.4136,No
